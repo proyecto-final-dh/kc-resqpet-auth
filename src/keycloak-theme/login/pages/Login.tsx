@@ -1,6 +1,6 @@
 import { FormEventHandler, useState } from "react";
 import { useConstCallback } from "keycloakify/tools/useConstCallback";
-import { TextField } from "@mui/material";
+import { Alert, Snackbar, TextField } from "@mui/material";
 import Logo from "../assets/Logo";
 import classNames from "classnames";
 import { PageProps } from "keycloakify/login";
@@ -8,6 +8,7 @@ import { KcContext } from "keycloakify/login/kcContext";
 import { I18n } from "keycloakify/login/i18n";
 import { TextBody, TextDetail, Title } from "components";
 import useBreakpoint from "hooks/use-breakpoint";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 export default function Login(
   props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>
@@ -38,7 +39,15 @@ export default function Login(
   console.log({ message });
 
   return (
-    <main className="lg:flex lg:h-screen">
+    <main className="relative lg:flex lg:h-screen">
+      <button
+        className="absolute cursor-pointer top-4 left-4"
+        onClick={() => {
+          window.history.back();
+        }}
+      >
+        <ChevronLeftIcon className="w-10 h-10 min-w-[40px] min-h-[40px] text-[white]" />
+      </button>
       <figure className="max-h-[300px] overflow-hidden lg:max-h-screen lg:h-screen lg:overflow-auto lg:w-1/2">
         <img
           src="https://s3-alpha-sig.figma.com/img/2232/b741/bcb9f70c46a50d0eea0fd93f039851c9?Expires=1699228800&Signature=JXWuifeW5Wrp5-AynB9cZO~FhnmxZm~pnoUFLOc2uXO5nEXr7l6p4-f-0rVMVJ4jFUErEpX7bnv5eNcKuflGN7Svc8MILk2wsWPD4Tn4IrpM1m~NuD9P-VW1NkNVJKGBqqXBwa5tfGOqg7W9MPHsCdwASG~OcwgtFWM8-NnBXHYcmWJMWbHSx0BRVuHdUi9wOT5IrSIn5mZvrYwr-lyQdbfgTAV4Uqn2yWXDj3QhXp6yt2cfDGdXDb20jxF5u3KoG2YjPvpYH6IZ-mBtXXwfXybe7DxU-2ptmraEOaIvYiiy7PwHGR3WvCZmUpooDki2A3-h02wTxGFNMIBb9Nu7nA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
@@ -60,24 +69,18 @@ export default function Login(
           <Logo />
         </article>
         <Title
-          variant="h1"
+          variant="h2"
           className="hidden text-center lg:block font-regular font-[300]"
         >
           Inicio de sesión
         </Title>
         <article className="flex flex-col gap-5 mt-14 lg:gap-0 lg:mt-7">
-          <TextDetail
-            size="s"
-            weight={isLg ? "regular" : "bold"}
-            className="lg:ml-5"
-          >
-            Email
-          </TextDetail>
           <TextField
             variant="outlined"
-            type="text"
+            type="email"
             name="email"
             id="email"
+            label="Email"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -86,15 +89,9 @@ export default function Login(
             placeholder="jessi@tuemail.com"
           />
         </article>
-        <article className="flex flex-col gap-5 mt-5 lg:gap-0 lg:mt-10">
-          <TextDetail
-            size="s"
-            weight={isLg ? "regular" : "bold"}
-            className="lg:ml-5"
-          >
-            Contraseña
-          </TextDetail>
+        <article className="flex flex-col gap-5 mt-5 lg:gap-0">
           <TextField
+            label="Contraseña"
             variant="outlined"
             type="password"
             name="password"
@@ -103,7 +100,7 @@ export default function Login(
               setPassword(e.target.value);
             }}
             value={password}
-            className="w-full !rounded-lg"
+            className="w-full"
             placeholder="Introduce acá tu contraseña"
           />
         </article>
@@ -113,9 +110,9 @@ export default function Login(
               window.location.href = url.loginResetCredentialsUrl;
             }}
           >
-            <TextBody size="s" weight="regular">
+            <TextDetail size="xs" weight="regular">
               ¿Has olvidado tú contraseña?
-            </TextBody>
+            </TextDetail>
           </button>
           <button
             disabled={isLoginButtonDisabled || !username || !password}
@@ -126,7 +123,7 @@ export default function Login(
               }
             )}
           >
-            <TextDetail size="s" weight="bold">
+            <TextDetail size="xs" weight="bold">
               Iniciar sesión
             </TextDetail>
           </button>
@@ -135,12 +132,12 @@ export default function Login(
               window.location.href = url.registrationUrl;
             }}
           >
-            <TextBody size="s" weight="regular" className="hidden lg:block">
+            <TextDetail size="xs" weight="regular" className="hidden lg:block">
               ¿No tienes cuenta?{" "}
               <a className="font-bold" href={url.registrationUrl}>
                 Regístrate
               </a>
-            </TextBody>
+            </TextDetail>
             <TextDetail size="xs" weight="regular" className="lg:hidden">
               ¿No tienes cuenta?{" "}
               <a className="font-bold" href={url.registrationUrl}>
@@ -150,6 +147,19 @@ export default function Login(
           </button>
         </article>
       </form>
+      {!!message && (
+        <Snackbar
+          open
+          anchorOrigin={{
+            vertical: isLg ? "bottom" : "top",
+            horizontal: "right",
+          }}
+        >
+          <Alert severity="error" sx={{ width: "100%" }}>
+            Inicio de sesión invalido.
+          </Alert>
+        </Snackbar>
+      )}
     </main>
   );
 }

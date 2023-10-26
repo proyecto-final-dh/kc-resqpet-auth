@@ -2,7 +2,7 @@
 import cn from "classnames";
 
 type TitleProps = {
-  variant: "h1" | "h2";
+  variant: "h1" | "h2" | "h3";
   className?: string;
   children: React.ReactNode;
 };
@@ -18,6 +18,7 @@ const Title = ({ children, variant, className }: TitleProps) => {
   const variants = {
     h1: <h1 {...getProps("text-h1")} />,
     h2: <h2 {...getProps("text-h2")} />,
+    h3: <h2 {...getProps("text-h3")} />,
   };
 
   return variants[variant];
