@@ -100,7 +100,7 @@ export const { getKcContext } = createGetKcContext<KcContextExtension>({
 });
 
 export const { kcContext } = getKcContext({
-  mockPageId: "register.ftl",
+  // mockPageId: "register.ftl",
   // mockPageId: "login.ftl",
 });
 
