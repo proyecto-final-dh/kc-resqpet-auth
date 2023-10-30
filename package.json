@@ -14,6 +14,7 @@
     "powerhooks": "^0.26.8",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-responsive": "^9.0.2",
     "tsafe": "^1.6.0"
   },
   "devDependencies": {
