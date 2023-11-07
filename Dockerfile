@@ -1,17 +1,17 @@
 FROM node:18 as keycloakify_jar_builder
 
-RUN yarn update && yarn install -y maven;
+RUN sudo yum update && yum install -y maven;
     # apt-get install -y openjdk-11-jdk && \
 
 COPY ./package.json ./yarn.lock /opt/app/
 
 WORKDIR /opt/app
 
-RUN yarn install --frozen-lockfile
+RUN sudo yum install --frozen-lockfile
 
 COPY ./ /opt/app/
 
-RUN yarn build-keycloak-theme
+RUN sudo yum build-keycloak-theme
 
 FROM quay.io/keycloak/keycloak:latest as builder
 
