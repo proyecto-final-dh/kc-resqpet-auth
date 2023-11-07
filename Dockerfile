@@ -1,8 +1,7 @@
 FROM node:18 as keycloakify_jar_builder
 
-RUN apt-get update && \
+RUN apt-get update && apt-get install -y maven;
     # apt-get install -y openjdk-11-jdk && \
-    apt-get install -y maven;
 
 COPY ./package.json ./yarn.lock /opt/app/
 
