@@ -1,4 +1,4 @@
-FROM node:18 as keycloakify_jar_builder
+FROM maven as keycloakify_jar_builder
 
 RUN sudo yum update && yum install -y maven;
     # apt-get install -y openjdk-11-jdk && \
