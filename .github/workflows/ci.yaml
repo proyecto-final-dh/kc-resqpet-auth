@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - main
+      - develp
   pull_request:
     branches:
       - main
@@ -62,7 +62,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   docker:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: 
       - check_if_version_upgraded
       - create_github_release
@@ -89,20 +89,20 @@ jobs:
           context: .
           tags: ${{ steps.step1.outputs.docker_tags }}
 
-  github_pages:
-    runs-on: ubuntu-latest
-    needs: 
-      - create_github_release
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - uses: bahmutov/npm-install@v1
-    - run: yarn build
-    # We tell GitHub pages that our package.json["homepage"] field is our domain name.  
-    - run: echo $(node -e 'console.log(require("url").parse(require("./package.json").homepage).host)') > build/CNAME
-    - run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${{github.repository}}.git
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/setup-node@v3.6.0
-    - run: npx -y -p gh-pages@3.0.0 gh-pages -u "github-actions-bot <actions@github.com>" -d build 
+  # github_pages:
+  #   runs-on: ubuntu-latest
+  #   needs: 
+  #     - create_github_release
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v2
+  #   - uses: bahmutov/npm-install@v1
+  #   - run: yarn build
+  #   # We tell GitHub pages that our package.json["homepage"] field is our domain name.  
+  #   - run: echo $(node -e 'console.log(require("url").parse(require("./package.json").homepage).host)') > build/CNAME
+  #   - run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${{github.repository}}.git
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   - uses: actions/setup-node@v3.6.0
+  #   - run: npx -y -p gh-pages@3.0.0 gh-pages -u "github-actions-bot <actions@github.com>" -d build 
  
