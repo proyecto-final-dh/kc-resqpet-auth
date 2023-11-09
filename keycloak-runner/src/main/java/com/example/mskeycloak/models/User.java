@@ -15,18 +15,33 @@ public class User {
     private String email;
     private List<String> groups;
 
-    public User(String username, String firstName, String lastName, String email) {
-        this.username = username;
+//    public User(String username, String firstName, String lastName, String email) {
+//        this.username = username;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//    }
+
+//    public User(String id, String username, String firstName, String lastName, String email) {
+//        this.id = id;
+//        this.username = username;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//    }
+//
+    public User(String id, String firstName, String lastName) {
+        this.id = id;
+        this.username = firstName + "_" + lastName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.email = firstName + lastName + "@hotmail.com";
     }
 
-    public User(String id, String username, String firstName, String lastName, String email) {
-        this.id = id;
-        this.username = username;
+    public User(String firstName, String lastName) {
+        this.username = firstName + "_" + lastName;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.email = firstName + lastName + "@hotmail.com";
     }
 }
