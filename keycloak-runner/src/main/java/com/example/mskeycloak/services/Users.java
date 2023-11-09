@@ -19,6 +19,8 @@ public class Users {
     public String createUser(User newUser, String realm) {
         UserRepresentation keycloakUser = new UserRepresentation();
         keycloakUser.setEnabled(true);
+        keycloakUser.setId(newUser.getId());
+        keycloakUser.setEmail(newUser.getEmail());
         keycloakUser.setUsername(newUser.getUsername());
         keycloakUser.setFirstName(newUser.getFirstName());
         keycloakUser.setLastName(newUser.getLastName());
