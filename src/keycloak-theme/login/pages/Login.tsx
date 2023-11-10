@@ -9,6 +9,7 @@ import { I18n } from "keycloakify/login/i18n";
 import { Container, TextDetail, Title } from "components";
 import useBreakpoint from "hooks/use-breakpoint";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import image from "./../../../assets/login.png";
 
 export default function Login(
   props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>
@@ -49,7 +50,7 @@ export default function Login(
         </button>
         <figure className="max-h-[300px] overflow-hidden lg:max-h-screen lg:h-screen lg:overflow-auto lg:w-1/2">
           <img
-            src="https://s3-alpha-sig.figma.com/img/2232/b741/bcb9f70c46a50d0eea0fd93f039851c9?Expires=1699228800&Signature=JXWuifeW5Wrp5-AynB9cZO~FhnmxZm~pnoUFLOc2uXO5nEXr7l6p4-f-0rVMVJ4jFUErEpX7bnv5eNcKuflGN7Svc8MILk2wsWPD4Tn4IrpM1m~NuD9P-VW1NkNVJKGBqqXBwa5tfGOqg7W9MPHsCdwASG~OcwgtFWM8-NnBXHYcmWJMWbHSx0BRVuHdUi9wOT5IrSIn5mZvrYwr-lyQdbfgTAV4Uqn2yWXDj3QhXp6yt2cfDGdXDb20jxF5u3KoG2YjPvpYH6IZ-mBtXXwfXybe7DxU-2ptmraEOaIvYiiy7PwHGR3WvCZmUpooDki2A3-h02wTxGFNMIBb9Nu7nA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            src={image}
             alt="login-background"
             className="w-full -mt-12 lg:h-full lg:mt-0"
           />

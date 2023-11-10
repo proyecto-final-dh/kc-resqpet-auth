@@ -8,6 +8,7 @@ import { Alert, Snackbar, TextField } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
 import useBreakpoint from "hooks/use-breakpoint";
+import image from "./../../../assets/register.png";
 
 export default function Register(
   props: PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n>
@@ -59,7 +60,7 @@ export default function Register(
       <main className="p-8 overflow-hidden lg:flex lg:h-screen lg:p-0 col-span-full">
         <figure className="relative hidden lg:block g:max-h-screen lg:h-screen lg:overflow-auto lg:w-1/2">
           <img
-            src="https://s3-alpha-sig.figma.com/img/7e70/6adc/138cc549fa73b72f63821d5bc2c1aef5?Expires=1699228800&Signature=H7yl-CLoTC7Ix8ptTMn3KEPYR9Uj3DAgLMQ1PhZX54Dk025988T~vgryENrZD0qVms-d6hdUTxm2L-oAC308y28QFtFoe9GiBb2JMVHsU2z5jbnpeDOgLVNNirth-Yi4zcM6iQAIurDNQ7Y3kzaRGR1ky3y9bgqIvbBVL~RIF-PEFbaLBBmZTXjzNY~huUWf00Yv4dOs2V0h75sgliEogGXs3WYZqa0mpAjgAqZ4Slt3KYUdpmsmt5yJAxnd4pUV33p3gclXn0VKKAnbpnomPqHwONu7Q5Lm-W7B584h8UXX1yeiW0Ff~JsDoKzk9587g9gUt4Fa4NOoK5L3zLNDMg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            src={image}
             alt="register-background"
             className="mx-auto lg:h-full"
           />
