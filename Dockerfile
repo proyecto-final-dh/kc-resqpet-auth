@@ -18,7 +18,7 @@ FROM quay.io/keycloak/keycloak:latest as builder
 
 WORKDIR /opt/keycloak
 
-COPY --from=keycloakify_jar_builder /opt/app/build_keycloak/target/keycloakify-starter-keycloak-theme-4.8.1.jar /opt/keycloak/providers/
+COPY --from=keycloakify_jar_builder /opt/app/build_keycloak/target/kc-resqpet-auth-keycloak-theme-1.0.0.jar /opt/keycloak/providers/
 RUN /opt/keycloak/bin/kc.sh build
 
 
