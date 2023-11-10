@@ -83,11 +83,11 @@ jobs:
       runs-on: [self-hosted]
       steps:
         - name: Pull image from docker hub
-          run: docker pull piresqpet/backend:latest
+          run: docker pull piresqpet/keycloak:latest
         - name: Delete old container
-          run: docker rm -f backend-resqpet
+          run: docker rm -f frontend-keycloak
         - name: Run docker container
-          run: docker run -d -p 8080:8080 --name backend-resqpet piresqpet/backend
+          run: docker run -d -p 8081:8081 --name frontend-keycloak piresqpet/keycloak
   # github_pages:
   #   runs-on: ubuntu-latest
   #   needs: 
