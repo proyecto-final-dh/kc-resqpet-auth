@@ -25,4 +25,4 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:latest
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 ENV KC_HOSTNAME=34.229.216.23
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --http-enabled=false --https-key-store-password=secret --proxy edge"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start --http-enabled true"]
