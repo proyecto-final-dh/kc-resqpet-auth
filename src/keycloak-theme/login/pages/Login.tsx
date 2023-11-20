@@ -40,14 +40,14 @@ export default function Login(
   return (
     <Container>
       <main className="relative lg:flex lg:h-screen col-span-full">
-        <button
+        {/* <button
           className="absolute cursor-pointer top-4 left-4"
           onClick={() => {
             window.history.back();
           }}
         >
           <ChevronLeftIcon className="w-10 h-10 min-w-[40px] min-h-[40px] text-[white]" />
-        </button>
+        </button> */}
         <figure className="max-h-[300px] overflow-hidden lg:max-h-screen lg:h-screen lg:overflow-auto lg:w-1/2">
           <img
             src={image}
@@ -77,7 +77,7 @@ export default function Login(
           <article className="flex flex-col gap-5 mt-14 lg:gap-0 lg:mt-7">
             <TextField
               variant="outlined"
-              type="email"
+              type="text"
               name="email"
               id="email"
               label="Email"
