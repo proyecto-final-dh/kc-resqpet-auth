@@ -8,7 +8,6 @@ import { KcContext } from "keycloakify/login/kcContext";
 import { I18n } from "keycloakify/login/i18n";
 import { Container, TextDetail, Title } from "components";
 import useBreakpoint from "hooks/use-breakpoint";
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import image from "./../../../assets/login.png";
 
 export default function Login(
